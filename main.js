@@ -41,15 +41,29 @@ const search = document.querySelector('#search')
 search.addEventListener('input', filterContacts)
 function filterContacts() {
   const searchTerm = search.value.toLowerCase().trim()
+  const contactWrappers = document.querySelectorAll('.contact-wrapper')
   const contacts = document.querySelectorAll('.contact')
 
-  contacts.forEach((contact) => {
-    const name = contact.querySelector('.name').textContent.toLowerCase()
+  contactWrappers.forEach(contactWrapper => {
+    let hasVisibleContacts = false
 
-    if (name.includes(searchTerm)) {
-      contact.style.display = 'flex'
+    contacts.forEach(contact => {
+      const name = contact.querySelector('.name').textContent.toLowerCase()
+
+      if (name.includes(searchTerm)) {
+        contact.style.display = 'flex'
+        if (contactWrapper.contains(contact)) {
+          hasVisibleContacts = true
+        }
+      } else {
+        contact.style.display = 'none'
+      }
+    })
+
+    if (hasVisibleContacts) {
+      contactWrapper.style.display = 'initial'
     } else {
-      contact.style.display = 'none'
+      contactWrapper.style.display = 'none'
     }
   })
 }
@@ -73,10 +87,8 @@ inputFile.addEventListener('change', (event) => {
     reader.readAsDataURL(file)
 })
 
-inputNumber.addEventListener('input', () => {
-  IMask(inputNumber, {
+IMask(inputNumber, {
     mask: '(00) 00000-0000'
-  })
 })
 
 const imagePreview = document.querySelector('.img-preview');
@@ -114,6 +126,7 @@ btn.addEventListener('click', function addNewContact(e) {
     
     inputName.value = ''
     inputNumber.value = ''
+    inputFile.value = ''
 })
 
 window.addEventListener('load', () => {
