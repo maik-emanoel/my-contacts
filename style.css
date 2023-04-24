@@ -330,6 +330,20 @@ header #search::placeholder {
     display: none;
 }
 
+.removeContact {
+    animation: fadeOut .7s forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(2rem);
+        opacity: 0;
+    }
+}
+
 @media (max-width: 470px) {
     #app {
         max-height: none;

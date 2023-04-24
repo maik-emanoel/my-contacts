@@ -32,10 +32,6 @@ const inputNumber = document.querySelector('#number-contact')
 const inputFile = document.querySelector('#file')
 const btn = document.querySelector('button')
 
-const addNewContactBtn = document.querySelector('.add-new-contact-btn')
-const addNewContactWrapper = document.querySelector('.background-blur')
-const closeBtn = document.querySelector('.close')
-
 const search = document.querySelector('#search')
 
 search.addEventListener('input', filterContacts)
@@ -67,6 +63,10 @@ function filterContacts() {
     }
   })
 }
+
+const addNewContactBtn = document.querySelector('.add-new-contact-btn')
+const addNewContactWrapper = document.querySelector('.background-blur')
+const closeBtn = document.querySelector('.close')
 
 addNewContactBtn.addEventListener('click', () => {
   addNewContactWrapper.style.display = 'initial'
@@ -112,9 +112,12 @@ btn.addEventListener('click', function addNewContact(e) {
       trashIcon.addEventListener('click', function removeContact(event) {
           const button = event.target
           const contact = button.closest('.contact')
-          contact.remove()
-  
-          verifyIfContactHasChildren(newContact)
+          newContact.classList.add('removeContact')
+
+          setTimeout(() => {
+            contact.remove()
+            verifyIfContactHasChildren(newContact)
+          }, 700)
       })
   
       let firstLetter = inputName.value.charAt(0).toUpperCase()
