@@ -330,9 +330,10 @@ header #search::placeholder {
     display: none;
 }
 
-@media (max-width: 425px) {
+@media (max-width: 470px) {
     #app {
         max-height: none;
+        max-width: none;
         height: 100vh;
     }
 
@@ -345,9 +346,14 @@ header #search::placeholder {
         max-height: none;
         height: 100%;
     }
+
+    .add-new-contact {
+        width: 90%;
+        margin: auto;
+    }
 }
 
-@media (max-width: 375px) {
+@media (max-width: 390px) {
     :root {
         font-size: 50%;
     }
