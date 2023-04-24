@@ -328,6 +328,7 @@ header #search::placeholder {
 
 .background-blur {
     display: none;
+    animation: fromBottom .6s backwards;
 }
 
 .removeContact {
@@ -341,6 +342,17 @@ header #search::placeholder {
     to {
         transform: translateX(2rem);
         opacity: 0;
+    }
+}
+
+@keyframes fromBottom {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
     }
 }
 
