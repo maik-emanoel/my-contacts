@@ -64,6 +64,12 @@ header h1 {
 
 header .add-new-contact-btn {
     cursor: pointer;
+    border-radius: 50%;
+    transition: background .15s;
+}
+
+header .add-new-contact-btn:hover {
+    background: #ffffff46;
 }
 
 header #search {
